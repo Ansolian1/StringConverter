@@ -15,11 +15,16 @@ std::string convertWord(std::string word)
 
     for (size_t i = 0; i < word.size(); i++)
     {
-        if (word.find_last_of(word[i]) == word.find_first_of(word[i])) {
-            convertedWord.append(1, '(');
+        if (word.find_last_of(word[i]) != i) {
+            convertedWord.append(1, ')');
         }
         else {
-            convertedWord.append(1, ')');
+            if (word.find_first_of(word[i]) != i) {
+                convertedWord.append(1, ')');
+            }
+            else {
+                convertedWord.append(1, '(');
+            }
         }
     }
     return convertedWord;
